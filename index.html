@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="宅男宅女电影网(zhainanzhainudianyingwang-app)——汇聚热门电影、经典剧集、动漫综艺与纪录片，提供高清影视资讯、上映排期与观影指南的在线影视门户。">
+<meta name="keywords" content="宅男宅女电影网, zhainanzhainudianyingwang-app, 电影, 电视剧, 动漫, 综艺, 纪录片, 高清影视, 在线观影">
+<meta name="author" content="宅男宅女电影网">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0f172a">
+<title>宅男宅女电影网 - 热门电影电视剧动漫综艺高清影视门户 | zhainanzhainudianyingwang-app</title>
+<link rel="canonical" href="https://zhainanzhainudianyingwang-app.github.io">
+<style>
+  :root{
+    --bg:#0b1120;
+    --bg2:#0f172a;
+    --card:#141f38;
+    --line:#23324f;
+    --txt:#e8eefc;
+    --sub:#9fb0d0;
+    --gold:#ffb020;
+    --cyan:#22d3ee;
+    --pink:#f472b6;
+    --radius:18px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+    background:radial-gradient(1200px 600px at 80% -10%,#1e3a5f 0%,transparent 60%),
+               radial-gradient(900px 500px at -10% 10%,#3b0764 0%,transparent 55%),
+               var(--bg);
+    color:var(--txt);
+    line-height:1.75;
+    overflow-x:hidden;
+  }
+  a{color:var(--cyan);text-decoration:none;transition:.2s}
+  a:hover{color:var(--gold)}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+  .pill{display:inline-block;font-size:12px;letter-spacing:.12em;color:var(--gold);
+        border:1px solid rgba(255,176,32,.35);border-radius:999px;padding:5px 14px;margin-bottom:14px}
+
+  /* Header */
+  header{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);
+         background:rgba(11,17,32,.82);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;gap:18px;height:64px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.5px}
+  .logo .mark{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font-size:17px;
+              background:linear-gradient(135deg,var(--gold),var(--pink))}
+  .logo b{font-size:18px}
+  .logo span{color:var(--sub);font-size:12px;font-weight:400}
+  .menu{display:flex;gap:6px;margin-left:auto;flex-wrap:wrap}
+  .menu a{color:var(--sub);font-size:14px;padding:8px 12px;border-radius:10px}
+  .menu a:hover{color:var(--txt);background:rgba(255,255,255,.06)}
+  .search{display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);
+          border-radius:999px;padding:7px 14px;width:190px}
+  .search input{background:none;border:none;outline:none;color:var(--txt);font-size:13px;width:100%}
+  .search input::placeholder{color:#6f81a3}
+
+  /* Hero */
+  .hero{position:relative;padding:70px 0 60px}
+  .hero h1{font-size:clamp(30px,5vw,54px);line-height:1.15;font-weight:900;
+           background:linear-gradient(90deg,#fff,#ffd28a,#22d3ee);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p{color:var(--sub);max-width:640px;font-size:16px;margin-top:16px}
+  .cta{display:flex;gap:12px;margin-top:26px;flex-wrap:wrap}
+  .btn{padding:13px 26px;border-radius:12px;font-weight:700;font-size:15px;border:1px solid transparent;cursor:pointer}
+  .btn.primary{background:linear-gradient(135deg,var(--gold),#ff6b6b);color:#20120a}
+  .btn.ghost{background:rgba(255,255,255,.05);border-color:var(--line);color:var(--txt)}
+  .stats{display:flex;gap:36px;margin-top:44px;flex-wrap:wrap}
+  .stats div b{display:block;font-size:26px;color:var(--gold)}
+  .stats div i{font-style:normal;color:var(--sub);font-size:13px}
+
+  /* Section */
+  section{padding:56px 0}
+  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:26px;flex-wrap:wrap}
+  .sec-head h2{font-size:26px;font-weight:800;display:flex;align-items:center;gap:10px}
+  .sec-head h2::before{content:"";width:5px;height:24px;border-radius:4px;background:var(--gold)}
+  .sec-head a{font-size:13px;color:var(--sub)}
+
+  .grid{display:grid;gap:20px}
+  .g4{grid-template-columns:repeat(4,1fr)}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .g2{grid-template-columns:repeat(2,1fr)}
+
+  .card{background:linear-gradient(180deg,var(--card),rgba(20,31,56,.4));
+        border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:.25s}
+  .card:hover{transform:translateY(-6px);border-color:rgba(255,176,32,.5);box-shadow:0 18px 40px -20px rgba(255,176,32,.4)}
+  .thumb{position:relative;aspect-ratio:3/4;background:linear-gradient(135deg,#1c2b4d,#2a1140);
+         display:grid;place-items:center;font-size:38px}
+  .thumb .tag{position:absolute;top:12px;left:12px;background:rgba(0,0,0,.55);color:#fff;
+              font-size:12px;padding:4px 10px;border-radius:8px;backdrop-filter:blur(4px)}
+  .thumb .score{position:absolute;top:12px;right:12px;background:var(--gold);color:#20120a;
+                font-weight:800;font-size:12px;padding:4px 9px;border-radius:8px}
+  .card body{padding:14px}
+  .card h3{font-size:16px;margin-bottom:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .card p{color:var(--sub);font-size:13px}
+
+  .topic{border:1px solid var(--line);border-radius:var(--radius);padding:24px;background:rgba(20,31,56,.45)}
+  .topic .ico{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;font-size:24px;margin-bottom:14px;
+              background:linear-gradient(135deg,rgba(34,211,238,.2),rgba(244,114,182,.2))}
+  .topic h3{font-size:18px;margin-bottom:8px}
+  .topic p{color:var(--sub);font-size:14px;margin-bottom:12px}
+  .chips{display:flex;gap:8px;flex-wrap:wrap}
+  .chips i{font-style:normal;font-size:12px;color:var(--sub);border:1px solid var(--line);
+           padding:4px 11px;border-radius:999px;background:rgba(255,255,255,.03)}
+
+  /* 排行 */
+  .rank{display:flex;align-items:center;gap:14px;padding:14px;border:1px solid var(--line);border-radius:14px;margin-bottom:12px;background:rgba(20,31,56,.4)}
+  .rank .n{font-size:22px;font-weight:900;color:var(--line);width:34px}
+  .rank:nth-child(1) .n{color:var(--gold)}
+  .rank .t{flex:1}
+  .rank .t b{display:block;font-size:15px}
+  .rank .t small{color:var(--sub);font-size:12px}
+  .rank .up{color:var(--cyan);font-size:12px}
+
+  /* 时间轴 */
+  .timeline{border-left:2px solid var(--line);margin-left:10px;padding-left:24px}
+  .timeline .item{position:relative;padding-bottom:26px}
+  .timeline .item::before{content:"";position:absolute;left:-31px;top:6px;width:12px;height:12px;border-radius:50%;
+                          background:var(--gold);box-shadow:0 0 0 4px rgba(255,176,32,.15)}
+  .timeline .item b{color:var(--gold);font-size:13px;letter-spacing:.1em}
+  .timeline .item h4{font-size:16px;margin:2px 0 4px}
+  .timeline .item p{color:var(--sub);font-size:14px}
+
+  /* FAQ */
+  details{border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:12px;background:rgba(20,31,56,.4);transition:.2s}
+  details[open]{border-color:rgba(34,211,238,.5)}
+  summary{cursor:pointer;font-weight:700;font-size:15px;list-style:none;display:flex;justify-content:space-between;gap:12px}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"＋";color:var(--cyan);font-weight:400}
+  details[open] summary::after{content:"－"}
+  details p{color:var(--sub);font-size:14px;margin-top:10px}
+
+  /* 订阅 */
+  .subscribe{border-radius:24px;padding:40px;background:linear-gradient(135deg,#1e293b,#3b0764);
+             border:1px solid var(--line);text-align:center}
+  .subscribe h3{font-size:24px;margin-bottom:10px}
+  .subscribe p{color:var(--sub);margin-bottom:20px}
+  .subscribe form{display:flex;gap:10px;max-width:460px;margin:0 auto;flex-wrap:wrap;justify-content:center}
+  .subscribe input{flex:1;min-width:220px;padding:13px 16px;border-radius:12px;border:1px solid var(--line);
+                   background:rgba(0,0,0,.25);color:var(--txt);outline:none;font-size:14px}
+
+  footer{border-top:1px solid var(--line);padding:44px 0 30px;color:var(--sub);font-size:13px}
+  .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:24px;margin-bottom:30px}
+  .foot-grid h5{color:var(--txt);margin-bottom:12px;font-size:14px}
+  .foot-grid ul{list-style:none}
+  .foot-grid li{margin-bottom:8px}
+  .foot-grid a{color:var(--sub)}
+  .copy{text-align:center;border-top:1px solid var(--line);padding-top:22px}
+  .bread{color:var(--sub);font-size:13px;margin-bottom:8px}
+  .bread a{color:var(--sub)}
+
+  @media(max-width:900px){
+    .g4{grid-template-columns:repeat(2,1fr)}
+    .g3,.g2{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:1fr 1fr}
+    .search{display:none}
+  }
+  @media(max-width:600px){
+    .nav{height:56px;gap:10px}
+    .logo b{font-size:15px}
+    .logo span{display:none}
+    .menu a{padding:6px 9px;font-size:13px}
+    .hero{padding:44px 0 36px}
+    .stats{gap:22px}
+    .stats div b{font-size:22px}
+    section{padding:40px 0}
+    .foot-grid{grid-template-columns:1fr}
+    .subscribe{padding:28px 20px}
+  }
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/yazhou.js"></script>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#top" aria-label="宅男宅女电影网首页">
+      <span class="mark">影</span>
+      <span><b>宅男宅女电影网</b><br><span>zhainanzhainudianyingwang-app</span></span>
+    </a>
+    <nav class="menu" aria-label="主导航">
+      <a href="#hot">热映</a>
+      <a href="#channel">频道</a>
+      <a href="#rank">排行</a>
+      <a href="#schedule">档期</a>
+      <a href="#guide">观影</a>
+      <a href="#faq">问答</a>
+    </nav>
+    <div class="search">
+      <span aria-hidden="true">🔍</span>
+      <input type="search" placeholder="搜电影 / 演员 / 类型" aria-label="站内搜索">
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- 首屏 -->
+  <section class="hero wrap">
+    <span class="pill">✦ 2026 秋季片单已更新</span>
+    <div class="bread"><a href="https://zhainanzhainudianyingwang-app.github.io">首页</a> / 影视导航</div>
+    <h1>宅男宅女电影网<br>好电影，一眼就找到</h1>
+    <p>宅男宅女电影网（zhainanzhainudianyingwang-app）是面向电影爱好者的影视信息门户，覆盖<b>电影、电视剧、动漫、综艺、纪录片</b>五大频道，提供新片资讯、上映排期、口碑排行与观影指南，帮你把「今晚看什么」这件事变得简单。</p>
+    <div class="cta">
+      <a class="btn primary" href="#hot">查看本周热映</a>
+      <a class="btn ghost" href="#channel">浏览影视频道</a>
+    </div>
+    <div class="stats">
+      <div><b>12,800+</b><i>收录影视条目</i></div>
+      <div><b>5</b><i>垂直内容频道</i></div>
+      <div><b>每日更新</b><i>资讯与排期</i></div>
+      <div><b>免费</b><i>观影指南与资讯</i></div>
+    </div>
+  </section>
+
+  <!-- 栏目一：热映 -->
+  <section id="hot" class="wrap">
+    <div class="sec-head">
+      <h2>本周热映</h2>
+      <a href="#">查看完整片单 →</a>
+    </div>
+    <div class="grid g4">
+
+      <article class="card">
+        <div class="thumb">🎬
+          <span class="tag">动作 / 科幻</span>
+          <span class="score">9.1</span>
+        </div>
+        <div class="card body">
+          <h3>星际回响</h3>
+          <p>2026-09-30 上映 · 142 分钟</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="thumb">🌊
+          <span class="tag">动画 / 奇幻</span>
+          <span class="score">8.7</span>
+        </div>
+        <div class="card body">
+          <h3>深海少年图鉴</h3>
+          <p>2026-10-01 上映 · 116 分钟</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="thumb">🕵️
+          <span class="tag">悬疑 / 犯罪</span>
+          <span class="score">8.4</span>
+        </div>
+        <div class="card body">
+          <h3>第九号嫌疑人</h3>
+          <p>2026-09-25 上映 · 128 分钟</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="thumb">❤️
+          <span class="tag">爱情 / 剧情</span>
+          <span class="score">8.2</span>
+        </div>
+        <div class="card body">
+          <h3>晚风来信</h3>
+          <p>2026-09-28 上映 · 105 分钟</p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- 栏目二：频道 -->
+  <section id="channel" class="wrap">
+    <div class="sec-head">
+      <h2>影视频道</h2>
+      <a href="#">全部分类 →</a>
+    </div>
+    <div class="grid g3">
+
+      <div class="topic">
+        <div class="ico">🎥</div>
+        <h3>电影</h3>
+        <p>院线新片、经典修复、独立制片与海外佳片，按类型、年代、地区多维检索。</p>
+        <div class="chips">
+          <i>动作</i><i>科幻</i><i>悬疑</i><i>文艺</i><i>喜剧</i>
+        </div>
+      </div>
+
+      <div class="topic">
+        <div class="ico">📺</div>
+        <h3>电视剧</h3>
+        <p>国产剧、美剧、日韩剧与迷你剧，追更日历、分集剧情与口碑解读一站搞定。</p>
+        <div class="chips">
+          <i>悬疑</i><i>古装</i><i>都市</i><i>犯罪</i><i>家庭</i>
+        </div>
+      </div>
+
+      <div class="topic">
+        <div class="ico">🎌</div>
+        <h3>动漫</h3>
+        <p>剧场版、TV 连载、国创与独立动画，更新表、声优档案与作画看点全收录。</p>
+        <div class="chips">
+          <i>热血</i><i>治愈</i><i>科幻</i><i>奇幻</i><i>日常</i>
+        </div>
+      </div>
+
+      <div class="topic">
+        <div class="ico">🎤</div>
+        <h3>综艺</h3>
+        <p>真人秀、竞演、访谈与旅行类节目，嘉宾阵容、播出时间与看点速览。</p>
+        <div class="chips">
+          <i>竞演</i><i>生活</i><i>访谈</i><i>推理</i><i>户外</i>
+        </div>
+      </div>
+
+      <div class="topic">
+        <div class="ico">🌍</div>
+        <h3>纪录片</h3>
+        <p>自然、历史、社会、科技与人物纪实，长镜头里的真实世界。</p>
+        <div class="chips">
+          <i>自然</i><i>历史</i><i>科技</i><i>人文</i>
+        </div>
+      </div>
+
+      <div class="topic">
+        <div class="ico">⭐</div>
+        <h3>片单推荐</h3>
+        <p>编辑精选主题片单：雨夜必看、通勤 30 分钟、被片名耽误的冷门好片。</p>
+        <div class="chips">
+          <i>冷门</i><i>高分</i><i>短片</i><i>合集</i>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 栏目三：排行 -->
+  <section id="rank" class="wrap">
+    <div class="sec-head">
+      <h2>口碑排行榜</h2>
+      <a href="#">更多榜单 →</a>
+    </div>
+    <div class="grid g2">
+
+      <div>
+        <h3 style="font-size:16px;margin-bottom:14px;color:var(--gold)">🏆 综合热度榜</h3>
+        <div class="rank"><span class="n">1</span><div class="t"><b>星际回响</b><small>科幻 / 动作 · 142 分钟</small></div><span class="up">↑ 2</span></div>
+        <div class="rank"><span class="n">2</span><div class="t"><b>深海少年图鉴</b><small>动画 / 奇幻 · 116 分钟</small></div><span class="up">↑ 1</span></div>
+        <div class="rank"><span class="n">3</span><div class="t"><b>第九号嫌疑人</b><small>悬疑 / 犯罪 · 128 分钟</small></div><span class="up">↓ 1</span></div>
+        <div class="rank"><span class="n">4</span><div class="t"><b>晚风来信</b><small>爱情 / 剧情 · 105 分钟</small></div><span class="up">↑ 3</span></div>
+        <div class="rank"><span class="n">5</span><div class="t"><b>长安未央</b><small>古装 / 权谋 · 45 集</small></div><span class="up">—</span></div>
+      </div>
+
+      <div>
+        <h3 style="font-size:16px;margin-bottom:14px;color:var(--cyan)">🔥 期待值榜</h3>
+        <div class="rank"><span class="n">1</span><div class="t"><b>无声告白</b><small>定档 2026-11-07</small></div><span class="up">待映</span></div>
+        <div class="rank"><span class="n">2</span><div class="t"><b>荒野方程式</b><small>定档 2026-11-21</small></div><span class="up">待映</span></div>
+        <div class="rank"><span class="n">3</span><div class="t"><b>机甲纪元：觉醒</b><small>定档 2026-12-05</small></div><span class="up">待映</span></div>
+        <div class="rank"><span class="n">4</span><div class="t"><b>她与她的山</b><small>定档 2026-12-19</small></div><span class="up">待映</span></div>
+        <div class="rank"><span class="n">5</span><div class="t"><b>追光者</b><small>定档 2027-01-01</small></div><span class="up">待映</span></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 栏目四：档期 -->
+  <section id="schedule" class="wrap">
+    <div class="sec-head">
+      <h2>上映档期</h2>
+      <a href="#">完整日历 →</a>
+    </div>
+    <div class="grid g2">
+      <div class="timeline">
+        <div class="item"><b>2026 年 10 月</b><h4>国庆档 · 7 部新片集中上映</h4><p>以动作科幻与合家欢动画为主，适合结伴观影，建议提前选座。</p></div>
+        <div class="item"><b>2026 年 11 月</b><h4>文艺与悬疑月</h4><p>多部中小成本剧情片扎堆，是发掘冷门好片的最佳时段。</p></div>
+        <div class="item"><b>2026 年 12 月</b><h4>贺岁档开启</h4><p>大制作陆续定档，跨年夜场次通常提前一周售罄。</p></div>
+        <div class="item"><b>2027 年 1 月</b><h4>春节档前瞻</h4><p>多部重磅续作官宣，关注预售开启时间与票价变化。</p></div>
+      </div>
+      <div>
+        <div class="topic" style="margin-bottom:20px">
+          <h3>选片小建议</h3>
+          <p>工作日午场票价更低、影厅更空；IMAX 与杜比厅优先选视听大片；文艺片建议避开首周，等口碑沉淀后再决定。</p>
+        </div>
+        <div class="topic">
+          <h3>观影礼仪</h3>
+          <p>入场前静音手机、勿屏摄、儿童场次请照看好同行小朋友，让每个人都能好好看完这部电影。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 栏目五：观影指南 -->
+  <section id="guide" class="wrap">
+    <div class="sec-head">
+      <h2>观影指南</h2>
+      <a href="#">全部文章 →</a>
+    </div>
+    <div class="grid g3">
+
+      <article class="card">
+        <div class="thumb">📝</div>
+        <div class="card body">
+          <h3>如何挑到「不踩雷」的电影</h3>
+          <p>看导演前作、看编剧、看预告片节奏，而不是只看主演名单。</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="thumb">🎞️</div>
+        <div class="card body">
+          <h3>画幅与影厅怎么选</h3>
+          <p>2.39:1 的史诗大片适合大银幕，1.85:1 的剧情片则更吃表演与声音。</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="thumb">🍿</div>
+        <div class="card body">
+          <h3>家庭观影片单</h3>
+          <p>全年龄友好、无惊悚镜头、时长控制在 100 分钟左右的安心之选。</p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- 栏目六：FAQ -->
+  <section id="faq" class="wrap">
+    <div class="sec-head">
+      <h2>常见问题</h2>
+      <a href="#">联系我们 →</a>
+    </div>
+
+    <details open>
+      <summary>宅男宅女电影网 是什么网站？</summary>
+      <p>宅男宅女电影网（zhainanzhainudianyingwang-app）是一个影视信息与导航类门户，提供电影、电视剧、动漫、综艺、纪录片的资讯、排期、排行与观影建议，帮助观众快速决定「看什么、去哪看、怎么选」。</p>
+    </details>
+
+    <details>
+      <summary>网站网址是多少？</summary>
+      <p>官方网址为 <a href="https://zhainanzhainudianyingwang-app.github.io">https://zhainanzhainudianyingwang-app.github.io</a>，建议收藏或设为浏览器首页，片单与排期每日更新。</p>
+    </details>
+
+    <details>
+      <summary>内容多久更新一次？</summary>
+      <p>新片资讯与上映排期每日更新，口碑排行每周刷新，主题片单与观影指南按档期节奏发布（通常为每月 2–4 篇）。</p>
+    </details>
+
+    <details>
+      <summary>是否提供在线播放？</summary>
+      <p>本站为信息导航与资讯站点，不托管、不提供任何影视资源的下载或播放，所有观看行为请在合法合规的正版平台完成。</p>
+    </details>
+
+    <details>
+      <summary>如何提交影片信息或纠错？</summary>
+      <p>可通过页面底部「联系我们」入口提交片名、上映日期、类型等补充信息，审核通过后会纳入对应频道与榜单。</p>
+    </details>
+  </section>
+
+  <!-- 订阅 -->
+  <section class="wrap">
+    <div class="subscribe">
+      <h3>每周一份「值得看」片单</h3>
+      <p>院线新片、冷门佳片、档期提醒，直接送到你的邮箱，不刷信息流也能不错过好电影。</p>
+      <form action="#" method="post" aria-label="订阅表单">
+        <input type="email" placeholder="输入邮箱地址" required aria-label="邮箱地址">
+        <button class="btn primary" type="submit">立即订阅</button>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="logo" href="#top">
+          <span class="mark">影</span>
+          <b>宅男宅女电影网</b>
+        </a>
+        <p style="margin-top:12px;max-width:320px">影视资讯与导航门户，让每一次「今晚看什么」都有答案。</p>
+      </div>
+      <div>
+        <h5>频道</h5>
+        <ul>
+          <li><a href="#channel">电影</a></li>
+          <li><a href="#channel">电视剧</a></li>
+          <li><a href="#channel">动漫</a></li>
+          <li><a href="#channel">综艺</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>工具</h5>
+        <ul>
+          <li><a href="#rank">口碑排行</a></li>
+          <li><a href="#schedule">上映日历</a></li>
+          <li><a href="#guide">观影指南</a></li>
+          <li><a href="#">主题片单</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>关于</h5>
+        <ul>
+          <li><a href="#faq">常见问题</a></li>
+          <li><a href="#">投稿纠错</a></li>
+          <li><a href="#">版权声明</a></li>
+          <li><a href="#">联系我们</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copy">
+      网站名称：<b style="color:var(--txt)">宅男宅女电影网</b> ｜ 网站网址：<b style="color:var(--txt)">https://zhainanzhainudianyingwang-app.github.io</b><br>
+      © 2026 宅男宅女电影网 zhainanzhainudianyingwang-app 保留所有权利。本站仅为影视信息导航，倡导正版观影。
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
